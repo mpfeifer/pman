@@ -1,8 +1,6 @@
 ;;; ac-java.el --- auto complete source for java import statements
 
-;; Copyright (C) 2014 Matthias Pfeifer
-
-;; Author: Matthias Pfeifer <mpfeifer77@gmail.com>
+;; Author: Matthias 
 ;; Version: 1.0.0
 ;; Keywords: java, classpath, pman, import
 ;; Package-Requires: ((auto-complete "1.4"))
@@ -30,7 +28,7 @@
 
 (defun ac-classpath ()
   (when (not ac-classpath-cache)
-    (setq ac-classpath-cache (pman--expand-classpath pman--project)))
+    (setq ac-classpath-cache (pman-expand-classpath pman-project)))
   ac-classpath-cache)
 
 (defvar ac-source-classpath

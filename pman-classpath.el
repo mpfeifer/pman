@@ -1,11 +1,9 @@
 ;;; pman-classpath.el --- pman classpath handling
 ;;
-;; Copyright (C) 2014  Matthias Pfeifer
-;;
-;; Author: Matthias Pfeifer <mpfeifer77@gmail.com>
+;; Author: Matthias 
 ;; Keywords: java classpath software project manager
 
-(defun pman--jarfile-to-classes-list (jarfile)
+(defun pman-jarfile-to-classes-list (jarfile)
   "Take location of a jar file and extract classes from the file."
   (let ((classes nil))
     (with-temp-buffer "*classpath*"
@@ -21,17 +19,17 @@
 				(replace-regexp-in-string "/" "." (match-string 0)))
 				classes)))
 		      classes)))
-;; Test: (pman--jarfile-to-classes-list "/home/user/java/jdk/jdk1.7.0_71/lib/jconsole.jar")
+;; Test: (pman-jarfile-to-classes-list "/home/user/java/jdk/jdk1.7.0_71/lib/jconsole.jar")
 
-(defun pman--expand-classpath (project)
+ (defun pman-expand-classpath (project)
   "Generates list of classes found in classpath of project PROJECT."
-  (let ((classpath (pman--classpath project))
+  (let ((classpath (pman-classpath project))
 	(classes nil))
     (dolist (item classpath)
       (cond
        ((string-match "^.*\\.jar$" item) ;; handle *.jar entries in classpath
-	(setq classes (append classes (pman--jarfile-to-classes-list item))))))
+	(setq classes (append classes (pman-jarfile-to-classes-list item))))))
     classes))
-;; Test: (pman--expand-classpath (car pman--projects))
+;; Test: (pman-expand-classpath (car pman-projects))
 
 (provide 'pman-classpath)
